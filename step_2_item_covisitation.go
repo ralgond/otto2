@@ -58,6 +58,9 @@ func main() {
 	for scanner.Scan() {
 		var line = scanner.Text()
 		var ss = strings.Split(line, ",")
+		if len(ss) > 100 {
+			continue
+		}
 		for i := 0; i < len(ss); i++ {
 			vi, _ := strconv.Atoi(ss[i])
 			for j := i + 1; j < len(ss); j++ {
@@ -68,6 +71,8 @@ func main() {
 			}
 		}
 	}
+
+	fmt.Println("=========> load data done.")
 
 	// handle first encountered error while reading
 	if err := scanner.Err(); err != nil {
